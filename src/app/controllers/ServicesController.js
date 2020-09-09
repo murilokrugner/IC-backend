@@ -44,7 +44,7 @@ class ServicesController {
 
   async update(req, res) {
     const schema = Yup.object().shape({
-      description: Yup.string(),,
+      description: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
