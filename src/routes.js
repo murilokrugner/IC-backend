@@ -1,12 +1,17 @@
 import { Router } from 'express';
+import authMiddleware from './app/middlewares/auth';
+
+import multer from 'multer';
+import multerConfig from './config/multer';
+
+import UsersController from './app/controllers/UsersController';
 
 const routes = new Router();
 
-routes.get('/', (req, res) => {
-  return res.json({
-    ok: 'ok'
-  })
-});
+const upload = multer(multerConfig);
 
+routes.post('/users', UsersController.store);
+
+routes.use(authMiddleware);
 
 export default routes;

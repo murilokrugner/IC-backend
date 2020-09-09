@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import User from '../models/User';
+import Users from '../models/Users';
 import File from '../models/File';
 
 class UsersController {
@@ -17,11 +17,11 @@ class UsersController {
         .min(6),
       locationX: Yup.string(),
       locationY: Yup.string(),
-      document: Yup.string(),
+      document: Yup.number(),
       address: Yup.string(),
-      number_address: Yup.string(),
+      number_address: Yup.number(),
       neighborhood_address: Yup.string(),
-      cep_address: Yup.string(),
+      cep_address: Yup.number(),
       provider: Yup.boolean().required(),
     });
 
@@ -30,16 +30,16 @@ class UsersController {
     }
 
     // verificando se já existe o email enviado
-    const userExists = await User.findOne({ where: { email: req.body.email } });
+    const userExists = await Users.findOne({ where: { email: req.body.email } });
 
     if (userExists) {
-      return res.status(400).json({ error: 'User already exists' });
-    }
+        return res.status(400).json({ error: 'User already exists' });
+      }
 
     // retornando somente os campos necessarios
     const { id, name, email, phone, mobile_phone, locationX,
         locationY, document, address, number_address,
-          neighborhood_address, cep_address, provider } = await User.create(req.body);
+          neighborhood_address, cep_address, provider } = await Users.create(req.body);
 
     return res.json({
         id,
@@ -91,10 +91,10 @@ class UsersController {
 
     const { phone, email, oldPassword } = req.body;
 
-    const user = await User.findByPk(req.userId);
+    const user = await Users.findByPk(req.userId);
 
     if (email !== user.email) {
-      const userExists = await User.findOne({
+      const userExists = await Users.findOne({
         where: { email },
       });
 
@@ -109,7 +109,7 @@ class UsersController {
 
     await user.update(req.body);
 
-    const { id, name, avatar } = await User.findByPk(req.userId, {
+    const { id, name, avatar } = await Users.findByPk(req.userId, {
       include: [
         {
           model: File,

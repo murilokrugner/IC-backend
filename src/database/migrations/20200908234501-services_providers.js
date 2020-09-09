@@ -26,11 +26,11 @@ module.exports = {
         allowNull: true,
       },
       price: {
-        thype: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       time: {
-        thype: Sequelize.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: true,
       },
       created_at: {

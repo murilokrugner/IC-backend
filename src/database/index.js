@@ -7,8 +7,9 @@ import Services from '../app/models/Services';
 import Services_Providers from '../app/models/Services_Providers';
 import Order_Providers from '../app/models/Order_Providers';
 import Order_Client from '../app/models/Order_Client';
+import File from '../app/models/File';
 
-const models = [Users, Services, Services_Providers, Order_Providers, Order_Client];
+const models = [Users, Services, Services_Providers, Order_Providers, Order_Client, File];
 
 class Database {
   constructor() {

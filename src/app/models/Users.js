@@ -11,8 +11,8 @@ class Users extends Model {
         mobile_phone: Sequelize.STRING,
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
-        locationX: Sequelize.STRING,
-        locationY: Sequelize.STRING,
+        location_x: Sequelize.STRING,
+        location_y: Sequelize.STRING,
         document: Sequelize.STRING,
         address: Sequelize.STRING,
         number_address: Sequelize.STRING,
@@ -34,9 +34,9 @@ class Users extends Model {
     return this;
   }
 
-  static associate(models) {
+  /*static associate(models) {
     this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
-  }
+  }*/
 
   checkPassword(password) {
     return bcrypt.compare(password, this.password_hash);

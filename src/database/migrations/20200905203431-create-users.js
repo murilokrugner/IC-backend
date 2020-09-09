@@ -28,11 +28,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      locationX: {
+      location_x: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      locationY: {
+      location_y: {
         type: Sequelize.STRING,
         allowNull: true,
       },
