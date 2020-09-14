@@ -11,6 +11,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      nickname: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING,
         allowNull: true,
@@ -54,6 +58,10 @@ module.exports = {
       },
       cep_address: {
         type: Sequelize.INTEGER,
+        allowNull: true,
+      },
+      state_address: {
+        type: Sequelize.STRING,
         allowNull: true,
       },
       provider: {

@@ -7,6 +7,7 @@ class UsersController {
     // validation
     const schema = Yup.object().shape({
       name: Yup.string().required(),
+      nickname: Yup.string(),
       email: Yup.string()
         .email()
         .required(),
@@ -22,6 +23,7 @@ class UsersController {
       number_address: Yup.number(),
       neighborhood_address: Yup.string(),
       cep_address: Yup.number(),
+      state_address: Yup.string(),
       provider: Yup.boolean().required(),
     });
 
@@ -37,13 +39,14 @@ class UsersController {
       }
 
     // retornando somente os campos necessarios
-    const { id, name, email, phone, mobile_phone, locationX,
+    const { id, name, nickname, email, phone, mobile_phone, locationX,
         locationY, document, address, number_address,
-          neighborhood_address, cep_address, provider } = await Users.create(req.body);
+          neighborhood_address, cep_address, state_address, provider } = await Users.create(req.body);
 
     return res.json({
         id,
         name,
+        nickname,
         email,
         phone,
         mobile_phone,
@@ -54,6 +57,7 @@ class UsersController {
         number_address,
         neighborhood_address,
         cep_address,
+        state_address,
         provider,
     });
   }
@@ -63,6 +67,7 @@ class UsersController {
     // validações
     const schema = Yup.object().shape({
       name: Yup.string(),
+      nickname: Yup.string(),
       email: Yup.string().email(),
       phone: Yup.string(),
       mobile_phone: Yup.string().required(),
@@ -73,6 +78,7 @@ class UsersController {
       number_address: Yup.string(),
       neighborhood_address: Yup.string(),
       cep_address: Yup.string(),
+      state_address: Yup.string(),
       oldPassword: Yup.string().min(6),
       password: Yup.string()
         .min(6)
@@ -120,8 +126,9 @@ class UsersController {
     });
 
     return res.json({
-      id,
+        id,
         name,
+        nickname,
         email,
         phone,
         mobile_phone,
@@ -132,6 +139,7 @@ class UsersController {
         number_address,
         neighborhood_address,
         cep_address,
+        state_address,
         provider,
         avatar,
     });

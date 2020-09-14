@@ -6,6 +6,7 @@ class Users extends Model {
     super.init(
       {
         name: Sequelize.STRING,
+        nickname: Sequelize.STRING,
         email: Sequelize.STRING,
         phone: Sequelize.STRING,
         mobile_phone: Sequelize.STRING,
@@ -17,7 +18,8 @@ class Users extends Model {
         address: Sequelize.STRING,
         number_address: Sequelize.STRING,
         neighborhood_address: Sequelize.STRING,
-        cep_address: Sequelize.STRING,
+        cep_address: Sequelize.INTEGER,
+        state_address: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
       },
       {
