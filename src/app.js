@@ -1,8 +1,10 @@
 // importando o express
 import express from 'express';
 
+import cors from 'cors';
 // importando o path
 import path from 'path';
+
 
 // importando arquivo de rotas
 import routes from './routes';
@@ -23,6 +25,7 @@ class App {
   middlewares() {
     // configuração para enviar json
     this.server.use(express.json());
+    this.server.use(cors());
     // retornar arquivos estaticos
     this.server.use(
       '/files',
