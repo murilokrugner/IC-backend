@@ -22,7 +22,7 @@ module.exports = {
       },
       phone: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       mobile_phone: {
         type: Sequelize.STRING,
@@ -43,6 +43,7 @@ module.exports = {
       document: {
         type: Sequelize.STRING,
         allowNull: true,
+        unique: true,
       },
       address: {
         type: Sequelize.STRING,

@@ -16,8 +16,8 @@ class UsersController {
       password: Yup.string()
         .required()
         .min(6),
-      locationX: Yup.string(),
-      locationY: Yup.string(),
+      location_x: Yup.string(),
+      location_y: Yup.string(),
       document: Yup.number(),
       address: Yup.string(),
       number_address: Yup.number(),
@@ -39,19 +39,19 @@ class UsersController {
       }
 
     // retornando somente os campos necessarios
-    const { id, name, nickname, email, phone, mobile_phone, locationX,
-        locationY, document, address, number_address,
+    const { name, nickname, email, phone, mobile_phone, password, location_x,
+        location_y, document, address, number_address,
           neighborhood_address, cep_address, state_address, provider } = await Users.create(req.body);
 
     return res.json({
-        id,
         name,
         nickname,
         email,
         phone,
         mobile_phone,
-        locationX,
-        locationY,
+        password,
+        location_x,
+        location_y,
         document,
         address,
         number_address,
@@ -71,8 +71,8 @@ class UsersController {
       email: Yup.string().email(),
       phone: Yup.string(),
       mobile_phone: Yup.string().required(),
-      locationX: Yup.string(),
-      locationY: Yup.string(),
+      location_x: Yup.string(),
+      location_y: Yup.string(),
       document: Yup.string(),
       address: Yup.string(),
       number_address: Yup.string(),
@@ -132,8 +132,8 @@ class UsersController {
         email,
         phone,
         mobile_phone,
-        locationX,
-        locationY,
+        location_x,
+        location_y,
         document,
         address,
         number_address,
