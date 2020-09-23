@@ -5,8 +5,8 @@ class Services_Providers extends Model {
     super.init(
       {
         description: Sequelize.STRING,
-        id_provider: Sequelize.INTEGER,
-        id_service: Sequelize.INTEGER,
+        //id_provider: Sequelize.INTEGER,
+        //id_service: Sequelize.INTEGER,
         price: Sequelize.DECIMAL,
         time: Sequelize.INTEGER,
       },
@@ -19,8 +19,8 @@ class Services_Providers extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Users, { foreignKey: 'id_provider', as: 'provider' });
-    this.belongsTo(models.Services, { foreignKey: 'id_service', as: 'service' });
+    this.belongsTo(models.Users, { foreignKey: 'id_provider', as: 'users' });
+    this.belongsTo(models.Services, { foreignKey: 'id_service', as: 'services' });
   }
 }
 

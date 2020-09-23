@@ -18,13 +18,15 @@ class UsersController {
         .min(6),
       location_x: Yup.string(),
       location_y: Yup.string(),
-      document: Yup.number(),
       address: Yup.string(),
       number_address: Yup.number(),
+      point_address: Yup.string(),
       neighborhood_address: Yup.string(),
-      cep_address: Yup.number(),
+      cep_address: Yup.string(),
       state_address: Yup.string(),
       provider: Yup.boolean().required(),
+      type_document: Yup.string(),
+      first_access: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -40,8 +42,8 @@ class UsersController {
 
     // retornando somente os campos necessarios
     const { name, nickname, email, phone, mobile_phone, password, location_x,
-      location_y, document, address, number_address,
-          neighborhood_address, cep_address, state_address, provider } = await Users.create(req.body);
+      location_y, address, number_address, point_address,
+          neighborhood_address, cep_address, state_address, provider, type_document, first_access } = await Users.create(req.body);
 
     return res.json({
         name,
@@ -52,13 +54,15 @@ class UsersController {
         password,
         location_x,
         location_y,
-        document,
         address,
         number_address,
+        point_address,
         neighborhood_address,
         cep_address,
         state_address,
         provider,
+        type_document,
+        first_access,
     });
   }
 

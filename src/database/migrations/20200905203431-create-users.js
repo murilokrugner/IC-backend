@@ -57,8 +57,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      point_address: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       cep_address: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       state_address: {
@@ -67,6 +71,14 @@ module.exports = {
       },
       provider: {
         type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
+      type_document: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      first_access: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       created_at: {

@@ -20,7 +20,8 @@ class Services_ProvidersController {
     // validations
     const schema = Yup.object().shape({
       description: Yup.string().required(),
-      id_service: Yup.number.required(),
+      id_provider: Yup.number().required(),
+      id_service: Yup.number().required(),
       price: Yup.number().required(),
       time: Yup.number().required(),
     });
@@ -31,18 +32,19 @@ class Services_ProvidersController {
 
     // check user is provider
     const checkUserProvider = await Users.findOne({
-      where: { id: req.userId, provider: true },
+      where: { id: req.body.id_provider, provider: true },
     });
 
     if (!checkUserProvider) {
       return res.status(401).json({ error: 'User is not a provider' });
     }
 
-    // check name is exists
+    const { description, id_provider, id_service, price, time } = req.body;
+
     const checkAvailability = await Services_Providers.findOne({
       where: {
-        description: req.body.description,
-        provider_id: req.userId,
+        description: description,
+        id_provider: id_provider,
       },
     });
 
@@ -52,12 +54,9 @@ class Services_ProvidersController {
         .json({ error: 'Esse serviço já existe cadastrado' });
     }
 
-    const { description, id_service, price, time } = req.body;
-    const { id } = checkUserProvider;
-    const provider_id = id;
-
     const upload = await Services_Providers.create({
       description,
+      id_provider,
       id_service,
       price,
       time,
