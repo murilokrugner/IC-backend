@@ -8,7 +8,8 @@ import UsersController from './app/controllers/UsersController';
 import SessionController from './app/controllers/SessionController';
 import ServicesController from './app/controllers/ServicesController';
 import UsersDocumentController from './app/controllers/UsersDocumentController';
-import Services_ProvidersController from './app/controllers/Services_ProvidersController'
+import Services_ProvidersController from './app/controllers/Services_ProvidersController';
+import CountServicesProviderController from './app/controllers/CountServicesProviderController';
 
 const routes = new Router();
 
@@ -25,6 +26,10 @@ routes.put('/usersDocument', UsersDocumentController.update);
 routes.get('/services', ServicesController.index);
 
 routes.post('/serviceProvider', Services_ProvidersController.store);
+
+routes.get('/serviceProvider', Services_ProvidersController.index);
+
+routes.get('/servicesProviderRoutes', CountServicesProviderController.index);
 
 routes.use(authMiddleware);
 

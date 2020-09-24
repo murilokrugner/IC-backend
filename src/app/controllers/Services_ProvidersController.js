@@ -1,14 +1,23 @@
 import * as Yup from 'yup';
 import servicesProviders from '../models/servicesProviders';
 import Users from '../models/Users';
+import Services from '../models/Services';
 
 class Services_ProvidersController {
   async index(req, res) {
-    const services = await Services_Providers.findAll({
+
+    const services = await servicesProviders.findAll({
       where: {
-        provider_id: req.query.provider,
+        id_provider: req.query.provider,
       },
       attributes: ['id', 'description', 'price', 'time'],
+      include: [
+        {
+          model: Services,
+          as: 'service',
+          attributes: ['id', 'description'],
+        },
+      ],
     });
 
     //tem que fazer inner join com services para pegar a descrição
@@ -39,12 +48,20 @@ class Services_ProvidersController {
       return res.status(401).json({ error: 'User is not a provider' });
     }
 
-    const { description, id_provider, id_service, price, time } = req.body;
+    const { description, id_provider, service, price, time } = req.body;
+
+
+    const getIdService = await Services.findOne({
+      where: {
+        description: service,
+      },
+    });
+
+    const id_service = getIdService.id;
 
     const checkAvailability = await servicesProviders.findOne({
       where: {
-        description: description,
-        id_provider: id_provider,
+        id_service: id_service,
       },
     });
 
