@@ -20,8 +20,8 @@ class Services_ProvidersController {
     // validations
     const schema = Yup.object().shape({
       description: Yup.string().required(),
-      id_provider: Yup.number().required(),
-      id_service: Yup.number().required(),
+     // id_provider: Yup.number().required(),
+     // id_service: Yup.number().required(),
       price: Yup.number().required(),
       time: Yup.number().required(),
     });

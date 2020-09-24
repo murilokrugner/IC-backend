@@ -5,8 +5,8 @@ class servicesProviders extends Model {
     super.init(
       {
         description: Sequelize.STRING,
-        id_provider: Sequelize.INTEGER,
-        id_service: Sequelize.INTEGER,
+        //id_provider: Sequelize.INTEGER,
+        //id_service: Sequelize.INTEGER,
         price: Sequelize.DECIMAL,
         time: Sequelize.INTEGER,
       },
