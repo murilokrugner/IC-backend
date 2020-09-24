@@ -1,14 +1,12 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Order_Client extends Model {
+class servicesProviders extends Model {
   static init(sequelize) {
     super.init(
       {
+        description: Sequelize.STRING,
         id_provider: Sequelize.INTEGER,
-        id_service_provider: Sequelize.INTEGER,
-        obs: Sequelize.STRING,
-        finished: Sequelize.BOOLEAN,
-        paid: Sequelize.BOOLEAN,
+        id_service: Sequelize.INTEGER,
         price: Sequelize.DECIMAL,
         time: Sequelize.INTEGER,
       },
@@ -22,8 +20,9 @@ class Order_Client extends Model {
 
   static associate(models) {
     this.belongsTo(models.Users, { foreignKey: 'id_provider', as: 'provider' });
-    this.belongsTo(models.servicesProviders, { foreignKey: 'id_service_provider', as: 'service' });
+    this.belongsTo(models.Services, { foreignKey: 'id_service', as: 'service' });
+    this.belongsTo(models.FilesServices, { foreignKey: 'file_id', as: 'file' });
   }
 }
 
-export default Order_Client;
+export default servicesProviders;

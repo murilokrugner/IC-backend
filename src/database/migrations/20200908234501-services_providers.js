@@ -1,11 +1,23 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('services-providers', {
+    return queryInterface.createTable('servicesProviders', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+      },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      price: {
+        type: Sequelize.DECIMAL,
+        allowNull: false,
+      },
+      time: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
       },
       id_provider: {
         type: Sequelize.INTEGER,
@@ -14,23 +26,11 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: true,
       },
-      description: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       id_service: {
         type: Sequelize.INTEGER,
         references: { model: 'services', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: true,
-      },
-      price: {
-        type: Sequelize.DECIMAL,
-        allowNull: false,
-      },
-      time: {
-        type: Sequelize.INTEGER,
         allowNull: true,
       },
       created_at: {
@@ -45,6 +45,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('services-providers');
+    return queryInterface.dropTable('servicesProviders');
   },
 };

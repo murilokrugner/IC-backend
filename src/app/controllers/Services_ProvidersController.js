@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import Services_Providers from '../models/Services_Providers';
+import servicesProviders from '../models/servicesProviders';
 import Users from '../models/Users';
 
 class Services_ProvidersController {
@@ -41,7 +41,7 @@ class Services_ProvidersController {
 
     const { description, id_provider, id_service, price, time } = req.body;
 
-    const checkAvailability = await Services_Providers.findOne({
+    const checkAvailability = await servicesProviders.findOne({
       where: {
         description: description,
         id_provider: id_provider,
@@ -54,7 +54,7 @@ class Services_ProvidersController {
         .json({ error: 'Esse serviço já existe cadastrado' });
     }
 
-    const upload = await Services_Providers.create({
+    const upload = await servicesProviders.create({
       description,
       id_provider,
       id_service,

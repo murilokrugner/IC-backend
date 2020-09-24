@@ -4,12 +4,13 @@ import databaseConfig from '../config/database';
 
 import Users from '../app/models/Users';
 import Services from '../app/models/Services';
-import Services_Providers from '../app/models/Services_Providers';
+import servicesProviders from '../app/models/servicesProviders';
 import Order_Providers from '../app/models/Order_Providers';
 import Order_Client from '../app/models/Order_Client';
 import File from '../app/models/File';
+import FilesServices from '../app/models/FilesServices'
 
-const models = [Users, Services, Services_Providers, Order_Providers, Order_Client, File];
+const models = [Users, Services, servicesProviders, Order_Providers, Order_Client, File, FilesServices];
 
 class Database {
   constructor() {
