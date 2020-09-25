@@ -29,7 +29,7 @@ class App {
     // retornar arquivos estaticos
     this.server.use(
       '/files',
-      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
+      express.static(path.resolve(__dirname, '..', 'tmp', 'uploads', 'files'))
     );
   }
 

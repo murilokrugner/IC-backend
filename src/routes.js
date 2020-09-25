@@ -10,6 +10,7 @@ import ServicesController from './app/controllers/ServicesController';
 import UsersDocumentController from './app/controllers/UsersDocumentController';
 import Services_ProvidersController from './app/controllers/Services_ProvidersController';
 import CountServicesProviderController from './app/controllers/CountServicesProviderController';
+import FileController from './app/controllers/FileController';
 
 const routes = new Router();
 
@@ -32,6 +33,8 @@ routes.get('/serviceProvider', Services_ProvidersController.index);
 routes.delete('/serviceProvider', Services_ProvidersController.delete);
 
 routes.get('/servicesProviderRoutes', CountServicesProviderController.index);
+
+routes.post('/files', upload.single('file'), FileController.store);
 
 routes.use(authMiddleware);
 

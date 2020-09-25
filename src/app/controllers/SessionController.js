@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import authConfig from '../../config/auth';
 import Users from '../models/Users';
 import File from '../models/File';
+import FileCover from '../models/FileCover';
 
 class SessionController {
   async store(req, res) {
@@ -33,7 +34,18 @@ class SessionController {
       ],
     });
 
-    if (!user) {
+    const userCover = await Users.findOne({
+      where: { email },
+      include: [
+        {
+          model: FileCover,
+          as: 'cover',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    if (!user || !userCover) {
       return res.status(401).json({ error: 'User not found' });
     }
 
@@ -44,6 +56,8 @@ class SessionController {
 
     const { id, name, phone, avatar, provider, type_document, first_access } = user;
 
+    const { cover } = userCover;
+
     return res.json({
       user: {
         id,
@@ -52,6 +66,7 @@ class SessionController {
         phone,
         provider,
         avatar,
+        cover,
         type_document,
         first_access,
       },
