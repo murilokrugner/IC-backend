@@ -82,33 +82,14 @@ class Services_ProvidersController {
     return res.json(upload);
   }
 
-  async update(req, res) {
-    const schema = Yup.object().shape({
-      description: Yup.string().required(),
-      id_service: Yup.number.required(),
-      price: Yup.number().required(),
-      time: Yup.number().required(),
+  async delete(req, res) {
+    const response = await servicesProviders.destroy({
+      where: {
+        id: req.query.id,
+      },
     });
 
-    if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
-    }
-
-    const { description, id_service, price, duration } = req.body;
-
-    const { id } = req.params;
-
-    const service = await Services_Providers.findByPk(id);
-
-    if (name === service.name) {
-      const nameExists = await Services_Providers.findOne({
-        where: { name, price, duration },
-      });
-    }
-
-    await service.update(req.body);
-
-    return res.json({ service });
+    return res.json(response);
   }
 }
 

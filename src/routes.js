@@ -29,6 +29,8 @@ routes.post('/serviceProvider', Services_ProvidersController.store);
 
 routes.get('/serviceProvider', Services_ProvidersController.index);
 
+routes.delete('/serviceProvider', Services_ProvidersController.delete);
+
 routes.get('/servicesProviderRoutes', CountServicesProviderController.index);
 
 routes.use(authMiddleware);
