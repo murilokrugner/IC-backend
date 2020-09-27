@@ -3,7 +3,7 @@ module.exports = {
     // adicionar coluna a uma tabela
     return queryInterface.addColumn('users', 'cover_id', {
       type: Sequelize.INTEGER,
-      references: { model: 'files', key: 'id' },
+      references: { model: 'file_covers', key: 'id' },
       onUpdate: 'CASCADE',
       onDelete: 'SET NULL',
       allowNull: true,
@@ -11,7 +11,7 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.removeColumn('users', 'avatar_id');
+    return queryInterface.removeColumn('users', 'cover_id');
   },
 };
 

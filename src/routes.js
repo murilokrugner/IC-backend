@@ -11,6 +11,7 @@ import UsersDocumentController from './app/controllers/UsersDocumentController';
 import Services_ProvidersController from './app/controllers/Services_ProvidersController';
 import CountServicesProviderController from './app/controllers/CountServicesProviderController';
 import FileController from './app/controllers/FileController';
+import FileCoverController from './app/controllers/FileCoverController';
 
 const routes = new Router();
 
@@ -35,6 +36,7 @@ routes.delete('/serviceProvider', Services_ProvidersController.delete);
 routes.get('/servicesProviderRoutes', CountServicesProviderController.index);
 
 routes.post('/files', upload.single('file'), FileController.store);
+routes.post('/files_cover', upload.single('file'), FileCoverController.store);
 
 routes.use(authMiddleware);
 
