@@ -9,6 +9,7 @@ class Services_ProvidersController {
     const services = await servicesProviders.findAll({
       where: {
         id_provider: req.query.provider,
+        //id_service: req.query.service,
       },
       attributes: ['id', 'description', 'price', 'time', 'complete'],
       include: [
