@@ -9,6 +9,7 @@ class servicesProviders extends Model {
         //id_service: Sequelize.INTEGER,
         price: Sequelize.DECIMAL,
         time: Sequelize.INTEGER,
+        complete: Sequelize.BOOLEAN,
       },
       {
         sequelize,

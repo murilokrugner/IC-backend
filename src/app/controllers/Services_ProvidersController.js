@@ -10,7 +10,7 @@ class Services_ProvidersController {
       where: {
         id_provider: req.query.provider,
       },
-      attributes: ['id', 'description', 'price', 'time'],
+      attributes: ['id', 'description', 'price', 'time', 'complete'],
       include: [
         {
           model: Services,
@@ -48,7 +48,7 @@ class Services_ProvidersController {
       return res.status(401).json({ error: 'User is not a provider' });
     }
 
-    const { description, id_provider, service, price, time } = req.body;
+    const { description, id_provider, service, price, time, complete } = req.body;
 
 
     const getIdService = await Services.findOne({
@@ -77,6 +77,7 @@ class Services_ProvidersController {
       id_service,
       price,
       time,
+      complete,
     });
 
     return res.json(upload);
