@@ -9,7 +9,7 @@ class FilesServices extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return 'localhost:3333/files/';
+            return `http://10.0.2.2:3333/files/${this.path}`;
           },
         },
       },
@@ -19,6 +19,10 @@ class FilesServices extends Model {
     );
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Users, { foreignKey: 'id_provider', as: 'provider' });
   }
 }
 
