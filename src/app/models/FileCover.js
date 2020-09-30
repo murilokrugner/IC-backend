@@ -9,7 +9,7 @@ class FileCover extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return 'localhost:3333/files/tmp/uploads/files';
+            return `http://10.0.2.2:3333/files/${this.path}`;
           },
         },
       },

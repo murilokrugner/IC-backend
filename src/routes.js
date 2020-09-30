@@ -13,6 +13,8 @@ import CountServicesProviderController from './app/controllers/CountServicesProv
 import FileController from './app/controllers/FileController';
 import FileCoverController from './app/controllers/FileCoverController';
 import ServiceProviderListController from './app/controllers/ServiceProviderListController';
+import GetImagesProfileController from './app/controllers/GetImagesProfileController';
+
 
 const routes = new Router();
 
@@ -40,6 +42,8 @@ routes.post('/files', upload.single('file'), FileController.store);
 routes.post('/files_cover', upload.single('file'), FileCoverController.store);
 
 routes.get('/serviceslist', ServiceProviderListController.index);
+
+routes.get('/getImages', GetImagesProfileController.index);
 
 routes.use(authMiddleware);
 
