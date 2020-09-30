@@ -4,7 +4,7 @@ import Services from '../models/Services';
 class ServiceProviderListController {
   async index(req, res) {
 
-    const services = await servicesProviders.findAll({
+    const services = await servicesProviders.findOne({
       where: {
         id_provider: req.query.provider,
         id_service: req.query.service,

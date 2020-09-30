@@ -47,6 +47,7 @@ routes.get('/serviceslist', ServiceProviderListController.index);
 routes.get('/getImages', GetImagesProfileController.index);
 
 routes.post('/files_services', upload.single('file'), FilesServicesController.store);
+routes.get('/files_services', FilesServicesController.index);
 
 routes.use(authMiddleware);
 
