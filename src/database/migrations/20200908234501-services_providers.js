@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false,
       },
       time: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       id_provider: {

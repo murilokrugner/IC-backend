@@ -7,7 +7,7 @@ class ServiceProviderListController {
     const services = await servicesProviders.findOne({
       where: {
         id_provider: req.query.provider,
-        id_service: req.query.service,
+        id: req.query.service,
       },
       attributes: ['id', 'description', 'price', 'time', 'complete'],
       include: [

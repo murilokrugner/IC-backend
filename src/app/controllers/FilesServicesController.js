@@ -37,6 +37,16 @@ class FilesServicesController {
 
     return res.json(file);
   }
+
+  async delete(req, res) {
+    const response = await FilesServices.destroy({
+      where: {
+        id: req.query.id,
+      },
+    });
+
+    return res.json(response);
+  }
 }
 
 export default new FilesServicesController();

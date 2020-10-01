@@ -6,7 +6,7 @@ class servicesProviders extends Model {
       {
         description: Sequelize.STRING,
         price: Sequelize.DECIMAL,
-        time: Sequelize.INTEGER,
+        time: Sequelize.STRING,
         complete: Sequelize.BOOLEAN,
       },
       {

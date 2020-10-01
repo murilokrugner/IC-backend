@@ -82,6 +82,19 @@ class Services_ProvidersController {
     return res.json(upload);
   }
 
+  async update(req, res) {
+    const service = await servicesProviders.findByPk(req.body.id);
+
+    await service.update({
+      description: req.body.description,
+      price: req.body.price,
+      time: req.body.time,
+      complete: true,
+    });
+
+    return res.json(service);
+  }
+
   async delete(req, res) {
     const response = await servicesProviders.destroy({
       where: {

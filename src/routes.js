@@ -35,6 +35,8 @@ routes.post('/serviceProvider', Services_ProvidersController.store);
 
 routes.get('/serviceProvider', Services_ProvidersController.index);
 
+routes.put('/serviceProvider', Services_ProvidersController.update);
+
 routes.delete('/serviceProvider', Services_ProvidersController.delete);
 
 routes.get('/servicesProviderRoutes', CountServicesProviderController.index);
@@ -48,6 +50,7 @@ routes.get('/getImages', GetImagesProfileController.index);
 
 routes.post('/files_services', upload.single('file'), FilesServicesController.store);
 routes.get('/files_services', FilesServicesController.index);
+routes.delete('/files_services', FilesServicesController.delete);
 
 routes.use(authMiddleware);
 
