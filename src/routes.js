@@ -16,6 +16,7 @@ import ServiceProviderListController from './app/controllers/ServiceProviderList
 import GetImagesProfileController from './app/controllers/GetImagesProfileController';
 import FilesServicesController from './app/controllers/FilesServicesController';
 import VerifyServiceController from './app/controllers/VerifyServiceController';
+import ConfirmFirstAccessControler from './app/controllers/ConfirmFirstAccessControler';
 
 
 const routes = new Router();
@@ -54,6 +55,8 @@ routes.get('/files_services', FilesServicesController.index);
 routes.delete('/files_services', FilesServicesController.delete);
 
 routes.get('/verifyservices', VerifyServiceController.index);
+
+routes.put('/firstaccessconfirm', ConfirmFirstAccessControler.update);
 
 routes.use(authMiddleware);
 
