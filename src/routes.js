@@ -15,6 +15,7 @@ import FileCoverController from './app/controllers/FileCoverController';
 import ServiceProviderListController from './app/controllers/ServiceProviderListController';
 import GetImagesProfileController from './app/controllers/GetImagesProfileController';
 import FilesServicesController from './app/controllers/FilesServicesController';
+import VerifyServiceController from './app/controllers/VerifyServiceController';
 
 
 const routes = new Router();
@@ -51,6 +52,8 @@ routes.get('/getImages', GetImagesProfileController.index);
 routes.post('/files_services', upload.single('file'), FilesServicesController.store);
 routes.get('/files_services', FilesServicesController.index);
 routes.delete('/files_services', FilesServicesController.delete);
+
+routes.get('/verifyservices', VerifyServiceController.index);
 
 routes.use(authMiddleware);
 
