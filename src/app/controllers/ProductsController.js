@@ -32,11 +32,11 @@ class ProductsController {
   async store(req, res) {
     // validations
     const schema = Yup.object().shape({
-      description: Yup.string().required(),
-      forward_price: Yup.number().required(),
-      cash_price: Yup.number().required(),
-      brand: Yup.string().required(),
-      comments: Yup.string().required()
+      description: Yup.string(),
+      forward_price: Yup.number(),
+      cash_price: Yup.number(),
+      brand: Yup.string(),
+      comments: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {

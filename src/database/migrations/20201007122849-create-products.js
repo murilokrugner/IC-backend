@@ -9,15 +9,15 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       forward_price: {
         type: Sequelize.DECIMAL,
-        allowNull: false,
+        allowNull: true,
       },
       cash_price: {
         type: Sequelize.DECIMAL,
-        allowNull: false,
+        allowNull: true,
       },
       id_provider: {
         type: Sequelize.INTEGER,
@@ -42,11 +42,11 @@ module.exports = {
       },
       brand: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       comments: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       created_at: {
         type: Sequelize.DATE,

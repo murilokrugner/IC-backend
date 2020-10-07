@@ -23,6 +23,7 @@ import ProductUnitsController from './app/controllers/ProductUnitsController';
 import ProductsController from './app/controllers/ProductsController';
 import PaymentProductController from './app/controllers/PaymentProductController';
 import FilesProductsController from './app/controllers/FilesProductsController';
+import ProductAddCategoryController from './app/controllers/ProductAddCategoryController';
 
 const routes = new Router();
 
@@ -85,6 +86,8 @@ routes.delete('/paymentproduct', PaymentProductController.delete);
 routes.get('/filesproducts', FilesProductsController.index);
 routes.post('/filesproducts', upload.single('file'), FilesProductsController.store);
 routes.delete('/filesproducts', FilesProductsController.delete);
+
+routes.post('/addcategoryproduct', ProductAddCategoryController.store);
 
 routes.use(authMiddleware);
 
