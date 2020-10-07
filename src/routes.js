@@ -17,7 +17,11 @@ import GetImagesProfileController from './app/controllers/GetImagesProfileContro
 import FilesServicesController from './app/controllers/FilesServicesController';
 import VerifyServiceController from './app/controllers/VerifyServiceController';
 import ConfirmFirstAccessControler from './app/controllers/ConfirmFirstAccessControler';
-
+import ProductCategoryController from './app/controllers/ProductCategoryController';
+import PaymentMethodsController from './app/controllers/PaymentMethodsController';
+import ProductUnitsController from './app/controllers/ProductUnitsController';
+import ProductsController from './app/controllers/ProductsController';
+import PaymentProductController from './app/controllers/PaymentProductController';
 
 const routes = new Router();
 
@@ -57,6 +61,25 @@ routes.delete('/files_services', FilesServicesController.delete);
 routes.get('/verifyservices', VerifyServiceController.index);
 
 routes.put('/firstaccessconfirm', ConfirmFirstAccessControler.update);
+
+routes.get('/productcategory', ProductCategoryController.index);
+routes.post('/productcategory', ProductCategoryController.store);
+routes.put('/productcategory', ProductCategoryController.update);
+
+routes.get('/paymentmethods', PaymentMethodsController.index);
+routes.post('/paymentmethods', PaymentMethodsController.store);
+
+routes.get('/productunits', ProductUnitsController.index);
+routes.post('/productunits', ProductUnitsController.store);
+
+routes.get('/products', ProductsController.index);
+routes.post('/products', ProductsController.store);
+routes.put('/products', ProductsController.update);
+routes.delete('/products', ProductsController.delete);
+
+routes.get('/paymentproduct', PaymentProductController.index);
+routes.post('/paymentproduct', PaymentProductController.store);
+routes.delete('/paymentproduct', PaymentProductController.delete);
 
 routes.use(authMiddleware);
 

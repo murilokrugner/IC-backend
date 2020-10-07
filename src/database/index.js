@@ -11,7 +11,15 @@ import File from '../app/models/File';
 import FilesServices from '../app/models/FilesServices'
 import FileCover from '../app/models/FileCover';
 
-const models = [Users, Services, servicesProviders, Order_Providers, Order_Client, File, FileCover, FilesServices];
+import ProductCategory from '../app/models/ProductCategory';
+import PaymentMethods from '../app/models/PaymentMethods';
+import ProductUnits from '../app/models/ProductUnits';
+
+import Products from '../app/models/Products';
+import PaymentProduct from '../app/models/PaymentProduct';
+
+const models = [Users, Services, servicesProviders, Order_Providers,
+  Order_Client, File, FileCover, FilesServices, ProductCategory, PaymentMethods, ProductUnits, Products, PaymentProduct];
 
 class Database {
   constructor() {
