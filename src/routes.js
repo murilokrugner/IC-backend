@@ -22,6 +22,7 @@ import PaymentMethodsController from './app/controllers/PaymentMethodsController
 import ProductUnitsController from './app/controllers/ProductUnitsController';
 import ProductsController from './app/controllers/ProductsController';
 import PaymentProductController from './app/controllers/PaymentProductController';
+import FilesProductsController from './app/controllers/FilesProductsController';
 
 const routes = new Router();
 
@@ -80,6 +81,10 @@ routes.delete('/products', ProductsController.delete);
 routes.get('/paymentproduct', PaymentProductController.index);
 routes.post('/paymentproduct', PaymentProductController.store);
 routes.delete('/paymentproduct', PaymentProductController.delete);
+
+routes.get('/filesproducts', FilesProductsController.index);
+routes.post('/filesproducts', upload.single('file'), FilesProductsController.store);
+routes.delete('/filesproducts', FilesProductsController.delete);
 
 routes.use(authMiddleware);
 

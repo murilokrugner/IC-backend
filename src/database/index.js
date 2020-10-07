@@ -18,8 +18,10 @@ import ProductUnits from '../app/models/ProductUnits';
 import Products from '../app/models/Products';
 import PaymentProduct from '../app/models/PaymentProduct';
 
+import FilesProducts from '../app/models/FilesProducts';
+
 const models = [Users, Services, servicesProviders, Order_Providers,
-  Order_Client, File, FileCover, FilesServices, ProductCategory, PaymentMethods, ProductUnits, Products, PaymentProduct];
+  Order_Client, File, FileCover, FilesServices, ProductCategory, PaymentMethods, ProductUnits, Products, PaymentProduct, FilesProducts];
 
 class Database {
   constructor() {
