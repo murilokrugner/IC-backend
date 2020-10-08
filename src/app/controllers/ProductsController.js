@@ -26,6 +26,11 @@ class ProductsController {
       ],
     });
 
+    if (product.length === 0) {
+      return res.json('empty');
+    }
+
+
     return res.json(product);
   }
 
