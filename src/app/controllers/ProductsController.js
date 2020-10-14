@@ -50,14 +50,6 @@ class ProductsController {
 
     const { description, forward_price, cash_price, id_provider, unit, category, brand, comments } = req.body;
 
-    const getIdUnit = await ProductUnits.findOne({
-      where: {
-        description: unit,
-      },
-    });
-
-    const id_unit = getIdUnit.id;
-
     const getIdCategory = await ProductCategory.findOne({
       where: {
         description: category,
@@ -65,6 +57,14 @@ class ProductsController {
     });
 
     const id_category = getIdCategory.id;
+
+    const getIdUnit = await ProductUnits.findOne({
+      where: {
+        description: unit,
+      },
+    });
+
+    const id_unit = getIdUnit.id;
 
     const upload = await Products.create({
       description,
