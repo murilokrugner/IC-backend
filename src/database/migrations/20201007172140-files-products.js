@@ -23,6 +23,10 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: true,
       },
+      main: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

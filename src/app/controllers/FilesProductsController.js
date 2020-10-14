@@ -35,6 +35,7 @@ class FilesProductsController {
       name,
       path,
       id_product: req.query.id,
+      main: false,
     });
 
     return res.json(file);

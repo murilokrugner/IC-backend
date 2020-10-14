@@ -43,7 +43,7 @@ class UsersController {
     // retornando somente os campos necessarios
     const { name, nickname, email, phone, mobile_phone, password, location_x,
       location_y, address, number_address, point_address,
-          neighborhood_address, cep_address, state_address, provider, type_document, first_access } = await Users.create(req.body);
+          neighborhood_address, cep_address, state_address, provider, type_document, first_access, store } = await Users.create(req.body);
 
     return res.json({
         name,
@@ -63,6 +63,7 @@ class UsersController {
         provider,
         type_document,
         first_access,
+        store,
     });
   }
 
@@ -146,6 +147,7 @@ class UsersController {
         state_address,
         provider,
         avatar,
+        store,
     });
   }
 }

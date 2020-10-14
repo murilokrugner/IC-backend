@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 import Products from '../models/Products';
-import Users from '../models/Users';
+import FilesProducts from '../models/FilesProducts';
 import ProductUnits from '../models/ProductUnits';
 import ProductCategory from '../models/ProductCategory';
 
@@ -116,6 +116,12 @@ class ProductsController {
   }
 
   async delete(req, res) {
+    const destroyFiles = await FilesProducts.destroy({
+      where: {
+        id_product: req.query.id,
+      },
+    });
+
     const response = await Products.destroy({
       where: {
         id: req.query.id,

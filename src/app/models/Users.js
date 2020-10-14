@@ -24,6 +24,7 @@ class Users extends Model {
         provider: Sequelize.BOOLEAN,
         type_document: Sequelize.STRING,
         first_access: Sequelize.STRING,
+        store: Sequelize.BOOLEAN,
       },
       {
         sequelize,

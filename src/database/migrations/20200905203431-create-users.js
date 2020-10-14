@@ -77,6 +77,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      store: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
       first_access: {
         type: Sequelize.STRING,
         allowNull: false,
