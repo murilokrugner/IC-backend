@@ -11,8 +11,8 @@ class FilesProductsController {
       attributes: ['id', 'path', 'url'],
     })
 
-    if (!service) {
-      return res.status(400).json({error: 'Product not image'});
+    if (service.length === 0) {
+      return res.json('empty');
     }
 
     return res.json(service);
