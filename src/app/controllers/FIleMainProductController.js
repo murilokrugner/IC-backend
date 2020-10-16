@@ -5,6 +5,7 @@ class FileMainProductController {
   async index(req, res) {
 
     //const { page = 1 } = req.query;
+    const {orderSelect} = req.query;
 
     const service = await FilesProducts.findAll({
       where: {
@@ -19,9 +20,9 @@ class FileMainProductController {
             id_provider: req.query.id,
           },
           attributes: ['id', 'description', 'cash_price'],
+          order: [orderSelect],
         },
       ],
-      order: ['created_at'],
       limit: req.query.page,
       //offset: (page - 1) * 2,
     })
