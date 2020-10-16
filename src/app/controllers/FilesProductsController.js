@@ -8,7 +8,7 @@ class FilesProductsController {
       where: {
         id_product: req.query.id,
       },
-      attributes: ['id', 'path', 'url'],
+      attributes: ['id', 'path', 'url', 'main'],
     })
 
     if (service.length === 0) {
@@ -19,14 +19,17 @@ class FilesProductsController {
   }
 
   async store(req, res) {
-    const verifyidProduct = await Products.findOne({
+    const alterMain = await FilesProducts.findOne({
       where: {
-        id: req.query.id,
+        id_product: req.query.id,
+        main: true,
       }
     });
 
-    if(!verifyidProduct) {
-      return res.status(400).json({ error: 'error'});
+    if (alterMain) {
+      await alterMain.update({
+        main: false,
+      });
     }
 
    const { originalname: name, filename: path } = req.file;
@@ -35,7 +38,7 @@ class FilesProductsController {
       name,
       path,
       id_product: req.query.id,
-      main: false,
+      main: true,
     });
 
     return res.json(file);
