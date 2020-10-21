@@ -7,7 +7,7 @@ class CountProductsController {
   async index(req, res) {
     const {orderSelect, brand, category, unit} = req.query;
 
-    if (brand !== '0' && category !== '0' && unit !== '0') {
+    if (brand !== 'Todos' && category !== 'Todos' && unit !== 'Todos') {
       const count = await FilesProducts.count({
           include: [
             {
@@ -42,7 +42,7 @@ class CountProductsController {
 
       return res.json(count);
 
-    } else if (brand !== '0' && category === '0' && unit === '0') {
+    } else if (brand !== 'Todos' && category === 'Todos' && unit === 'Todos') {
         const count = await FilesProducts.count({
           include: [
             {
@@ -59,7 +59,7 @@ class CountProductsController {
 
         return res.json(count);
 
-    } else if (brand === '0' && category !== '0' && unit === '0') {
+    } else if (brand === 'Todos' && category !== 'Todos' && unit === 'Todos') {
       const count = await FilesProducts.count({
         include: [
           {
@@ -86,7 +86,7 @@ class CountProductsController {
 
       return res.json(count);
 
-    } else if (brand === '0' && category === '0' && unit !== '0') {
+    } else if (brand === 'Todos' && category === 'Todos' && unit !== 'Todos') {
       const count = await FilesProducts.count({
         include: [
           {
