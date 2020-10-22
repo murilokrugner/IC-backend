@@ -12,6 +12,12 @@ class FilesProducts extends Model {
             return `http://192.168.2.102:3333/files/${this.path}`;
           },
         },
+        imagePath: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return `http://192.168.2.102:3333/files/${this.path}`;
+          },
+        },
         main: Sequelize.BOOLEAN,
       },
       {

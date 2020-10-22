@@ -8,7 +8,7 @@ class FilesViewProductsController {
       where: {
         id_product: req.query.id,
       },
-      attributes: ['id', ['url', 'imagePath']],
+      attributes: ['id', 'path', 'imagePath'],
     })
 
     if (service.length === 0) {
