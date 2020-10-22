@@ -27,6 +27,7 @@ import ProductAddCategoryController from './app/controllers/ProductAddCategoryCo
 import StoreController from './app/controllers/StoreController';
 import FileMainProductController from './app/controllers/FileMainProductController';
 import CountProductsController from './app/controllers/CountProductsController';
+import FilesViewProductsController from './app/controllers/FilesViewProductsController';
 
 const routes = new Router();
 
@@ -89,6 +90,8 @@ routes.delete('/paymentproduct', PaymentProductController.delete);
 routes.get('/filesproducts', FilesProductsController.index);
 routes.post('/filesproducts', upload.single('file'), FilesProductsController.store);
 routes.delete('/filesproducts', FilesProductsController.delete);
+
+routes.get('/filesviewproducts', FilesViewProductsController.index);
 
 routes.post('/addcategoryproduct', ProductAddCategoryController.store);
 
