@@ -28,6 +28,7 @@ import StoreController from './app/controllers/StoreController';
 import FileMainProductController from './app/controllers/FileMainProductController';
 import CountProductsController from './app/controllers/CountProductsController';
 import FilesViewProductsController from './app/controllers/FilesViewProductsController';
+import ProductsIdController from './app/controllers/ProductsIdController';
 
 const routes = new Router();
 
@@ -102,6 +103,8 @@ routes.get('/mainProduct', FileMainProductController.index);
 routes.put('/mainProduct', FileMainProductController.update);
 
 routes.get('/mainCount', CountProductsController.index);
+
+routes.get('/productId', ProductsIdController.index);
 
 routes.use(authMiddleware);
 
