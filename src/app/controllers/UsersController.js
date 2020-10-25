@@ -3,6 +3,20 @@ import Users from '../models/Users';
 import File from '../models/File';
 
 class UsersController {
+  async index(req, res) {
+    const user = await Users.findOne({
+      where: {
+        id: req.query.id,
+      },
+      attributes: ['name','nickname','email','phone','mobile_phone','document',
+      'address','number_address','point_address','neighborhood_address',
+      'cep_address','state_address','type_document']
+    });
+
+    return res.json(user);
+  }
+
+
   async store(req, res) {
     // validation
     const schema = Yup.object().shape({
