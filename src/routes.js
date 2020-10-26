@@ -38,6 +38,7 @@ routes.post('/session', SessionController.store);
 
 routes.post('/users', UsersController.store);
 routes.get('/users', UsersController.index);
+routes.put('/users', UsersController.update);
 
 routes.post('/services', ServicesController.store);
 

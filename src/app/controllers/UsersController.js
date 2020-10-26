@@ -85,20 +85,20 @@ class UsersController {
   async update(req, res) {
     // validações
     const schema = Yup.object().shape({
+      id: Yup.number(),
       name: Yup.string(),
       nickname: Yup.string(),
       email: Yup.string().email(),
       phone: Yup.string(),
       mobile_phone: Yup.string().required(),
-      location_x: Yup.string(),
-      location_y: Yup.string(),
       document: Yup.string(),
       address: Yup.string(),
-      number_address: Yup.string(),
+      number_address: Yup.number(),
+      point_address: Yup.string(),
       neighborhood_address: Yup.string(),
       cep_address: Yup.string(),
       state_address: Yup.string(),
-      oldPassword: Yup.string().min(6),
+      oldPassword: Yup.string(),
       password: Yup.string()
         .min(6)
         .when('oldPassword', (oldPassword, field) =>
@@ -114,13 +114,13 @@ class UsersController {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { phone, email, oldPassword } = req.body;
+    const user = await Users.findByPk(req.body.id);
 
-    const user = await Users.findByPk(req.userId);
-
-    if (email !== user.email) {
+    if (req.body.email !== user.email) {
       const userExists = await Users.findOne({
-        where: { email },
+        where: {
+          email: req.body.email,
+        },
       });
 
       if (userExists) {
@@ -128,41 +128,48 @@ class UsersController {
       }
     }
 
-    if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Password does not match' });
+    if (req.body.oldPassword !== '') {
+      if (req.body.oldPassword && !(await user.checkPassword(req.body.oldPassword))) {
+        return res.status(401).json({ error: 'Password does not match' });
+      }
+
+      await user.update({
+        name: req.body.name,
+        nickname: req.body.nickname,
+        email: req.body.email,
+        phone: req.body.phone,
+        mobile_phone: req.body.mobile_phone,
+        document: req.body.document,
+        address: req.body.address,
+        number_address: req.body.number_address,
+        point_address: req.body.point_address,
+        neighborhood_address: req.body.neighborhood_address,
+        cep_address: req.body.cep_address,
+        state_address: req.body.state_address,
+        password: req.body.confirmPassword,
+      });
+
+      return res.json({ok: 'ok'});
+    } else {
+            await user.update({
+              name: req.body.name,
+              nickname: req.body.nickname,
+              email: req.body.email,
+              phone: req.body.phone,
+              mobile_phone: req.body.mobile_phone,
+              document: req.body.document,
+              address: req.body.address,
+              number_address: req.body.number_address,
+              point_address: req.body.point_address,
+              neighborhood_address: req.body.neighborhood_address,
+              cep_address: req.body.cep_address,
+              state_address: req.body.state_address,
+            });
+
+            return res.json({ok: 'ok'});
+
     }
 
-    await user.update(req.body);
-
-    const { id, name, avatar } = await Users.findByPk(req.userId, {
-      include: [
-        {
-          model: File,
-          as: 'avatar',
-          attributes: ['id', 'path', 'url'],
-        },
-      ],
-    });
-
-    return res.json({
-        id,
-        name,
-        nickname,
-        email,
-        phone,
-        mobile_phone,
-        location_x,
-        location_y,
-        document,
-        address,
-        number_address,
-        neighborhood_address,
-        cep_address,
-        state_address,
-        provider,
-        avatar,
-        store,
-    });
   }
 }
 
