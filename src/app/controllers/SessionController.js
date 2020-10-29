@@ -54,7 +54,7 @@ class SessionController {
       return res.json(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name, phone, avatar, provider, type_document, first_access } = user;
+    const { id, name, phone, avatar, provider, city, type_document, first_access } = user;
 
     const { cover } = userCover;
 
@@ -67,6 +67,7 @@ class SessionController {
         provider,
         avatar,
         cover,
+        city,
         type_document,
         first_access,
       },

@@ -21,6 +21,7 @@ class Users extends Model {
         neighborhood_address: Sequelize.STRING,
         cep_address: Sequelize.STRING,
         state_address: Sequelize.STRING,
+        city: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
         type_document: Sequelize.STRING,
         first_access: Sequelize.STRING,

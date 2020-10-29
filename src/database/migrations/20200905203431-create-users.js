@@ -69,6 +69,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      city: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       provider: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

@@ -10,7 +10,7 @@ class UsersController {
       },
       attributes: ['name','nickname','email','phone','mobile_phone','document',
       'address','number_address','point_address','neighborhood_address',
-      'cep_address','state_address','type_document']
+      'cep_address','state_address', 'city', 'type_document']
     });
 
     return res.json(user);
@@ -38,6 +38,7 @@ class UsersController {
       neighborhood_address: Yup.string(),
       cep_address: Yup.string(),
       state_address: Yup.string(),
+      city: Yup.string(),
       provider: Yup.boolean().required(),
       type_document: Yup.string(),
       first_access: Yup.string(),
@@ -57,7 +58,7 @@ class UsersController {
     // retornando somente os campos necessarios
     const { name, nickname, email, phone, mobile_phone, password, location_x,
       location_y, address, number_address, point_address,
-          neighborhood_address, cep_address, state_address, provider, type_document, first_access, store } = await Users.create(req.body);
+          neighborhood_address, cep_address, state_address, city, provider, type_document, first_access, store } = await Users.create(req.body);
 
     return res.json({
         name,
@@ -74,6 +75,7 @@ class UsersController {
         neighborhood_address,
         cep_address,
         state_address,
+        city,
         provider,
         type_document,
         first_access,
@@ -98,6 +100,7 @@ class UsersController {
       neighborhood_address: Yup.string(),
       cep_address: Yup.string(),
       state_address: Yup.string(),
+      city: Yup.string(),
       oldPassword: Yup.string(),
       password: Yup.string()
         .min(6)
@@ -146,6 +149,7 @@ class UsersController {
         neighborhood_address: req.body.neighborhood_address,
         cep_address: req.body.cep_address,
         state_address: req.body.state_address,
+        city: req.body.city,
         password: req.body.confirmPassword,
       });
 
@@ -164,6 +168,7 @@ class UsersController {
               neighborhood_address: req.body.neighborhood_address,
               cep_address: req.body.cep_address,
               state_address: req.body.state_address,
+              city: req.body.city,
             });
 
             return res.json({ok: 'ok'});

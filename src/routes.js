@@ -29,6 +29,7 @@ import FileMainProductController from './app/controllers/FileMainProductControll
 import CountProductsController from './app/controllers/CountProductsController';
 import FilesViewProductsController from './app/controllers/FilesViewProductsController';
 import ProductsIdController from './app/controllers/ProductsIdController';
+import UsersFindCityController from './app/controllers/UsersFindCityController';
 
 const routes = new Router();
 
@@ -41,6 +42,7 @@ routes.get('/users', UsersController.index);
 routes.put('/users', UsersController.update);
 
 routes.post('/services', ServicesController.store);
+routes.get('/services-providers', UsersFindCityController.index);
 
 routes.put('/usersDocument', UsersDocumentController.update);
 
