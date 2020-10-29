@@ -33,11 +33,11 @@ module.exports = {
         allowNull: false,
       },
       location_x: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL(19,9),
         allowNull: true,
       },
       location_y: {
-        type: Sequelize.STRING,
+        type: Sequelize.DECIMAL(19,9),
         allowNull: true,
       },
       document: {

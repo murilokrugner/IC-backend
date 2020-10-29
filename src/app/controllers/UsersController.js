@@ -30,8 +30,8 @@ class UsersController {
       password: Yup.string()
         .required()
         .min(6),
-      location_x: Yup.string(),
-      location_y: Yup.string(),
+      location_x: Yup.number(),
+      location_y: Yup.number(),
       address: Yup.string(),
       number_address: Yup.number(),
       point_address: Yup.string(),

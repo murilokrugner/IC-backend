@@ -11,11 +11,30 @@ import routes from './routes';
 
 import './database';
 
+//const { Sequelize } = require('sequelize');
+
 // criando uma classe para configuração do servidor
 class App {
   constructor() {
     // atribuindo o express a var server
     this.server = express();
+
+    /*async function testConnectDb() {
+      const sequelize = new Sequelize('mysql', 'root', 'mysql', {
+        host: 'localhost',
+        dialect: 'mysql',
+      });
+
+      try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+      } catch (error) {
+        console.error('Unable to connect to the database:', error);
+      }
+    }
+
+
+    testConnectDb();*/
 
     // chamando os middlewares
     this.middlewares();
