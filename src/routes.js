@@ -31,6 +31,7 @@ import FilesViewProductsController from './app/controllers/FilesViewProductsCont
 import ProductsIdController from './app/controllers/ProductsIdController';
 import UsersFindCityController from './app/controllers/UsersFindCityController';
 import UserFindMapController from './app/controllers/UserFindMapController';
+import UsersCoordinatesController from './app/controllers/UsersCoordinatesController';
 
 const routes = new Router();
 
@@ -112,6 +113,8 @@ routes.get('/mainCount', CountProductsController.index);
 routes.get('/productId', ProductsIdController.index);
 
 routes.get('/usersMap', UserFindMapController.index);
+
+routes.get('/userCoordinates', UsersCoordinatesController.index);
 
 routes.use(authMiddleware);
 

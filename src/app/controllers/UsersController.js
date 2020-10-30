@@ -41,7 +41,6 @@ class UsersController {
       city: Yup.string(),
       provider: Yup.boolean().required(),
       type_document: Yup.string(),
-      first_access: Yup.string(),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -56,31 +55,30 @@ class UsersController {
       }
 
     // retornando somente os campos necessarios
-    const { name, nickname, email, phone, mobile_phone, password, location_x,
-      location_y, address, number_address, point_address,
-          neighborhood_address, cep_address, state_address, city, provider, type_document, first_access, store } = await Users.create(req.body);
-
-    return res.json({
-        name,
-        nickname,
-        email,
-        phone,
-        mobile_phone,
-        password,
-        location_x,
-        location_y,
-        address,
-        number_address,
-        point_address,
-        neighborhood_address,
-        cep_address,
-        state_address,
-        city,
-        provider,
-        type_document,
-        first_access,
-        store,
+    const userCreate = await Users.create({
+      name: req.body.name,
+      nickname: req.body.nickname,
+      email: req.body.email,
+      phone: req.body.phone,
+      mobile_phone: req.body.mobile_phone,
+      password: req.body.password,
+      location_x: req.body.location_x,
+      location_y: req.body.location_y,
+      address: req.body.address,
+      number_address: req.body.number_address,
+      point_address: req.body.point_address,
+      neighborhood_address: req.body.neighborhood_address,
+      cep_address: req.body.cep_address,
+      state_address: req.body.state_address,
+      city: req.body.city,
+      provider: req.body.provider,
+      type_document: req.body.type_document,
+      first_access: "1",
+      store: 0
     });
+
+
+    return res.json(userCreate);
   }
 
   // bloquear usuario a acessar alguma rota se o mesmo não estiver logado
