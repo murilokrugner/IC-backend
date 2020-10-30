@@ -61,6 +61,7 @@ class Services_ProvidersController {
     const checkAvailability = await servicesProviders.findOne({
       where: {
         id_service: id_service,
+        id_provider: id_provider,
       },
     });
 

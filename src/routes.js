@@ -30,6 +30,7 @@ import CountProductsController from './app/controllers/CountProductsController';
 import FilesViewProductsController from './app/controllers/FilesViewProductsController';
 import ProductsIdController from './app/controllers/ProductsIdController';
 import UsersFindCityController from './app/controllers/UsersFindCityController';
+import UserFindMapController from './app/controllers/UserFindMapController';
 
 const routes = new Router();
 
@@ -109,6 +110,8 @@ routes.put('/mainProduct', FileMainProductController.update);
 routes.get('/mainCount', CountProductsController.index);
 
 routes.get('/productId', ProductsIdController.index);
+
+routes.get('/usersMap', UserFindMapController.index);
 
 routes.use(authMiddleware);
 

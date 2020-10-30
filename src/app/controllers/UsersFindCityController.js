@@ -1,4 +1,6 @@
 import Users from '../models/Users';
+import servicesProviders from '../models/servicesProviders';
+import Services from '../models/Services';
 import sequelize from 'sequelize';
 
 class UsersFindCityController {
@@ -6,13 +8,24 @@ class UsersFindCityController {
 
     const {city} = req.query;
 
-    const user = await Users.findAll({
-      where: {
-        city: city,
-        provider: true,
-      },
-      attributes: ['id',['location_x', 'latitude'],['location_y', 'longitude'], ['name', 'title']]
-      //attributes: [[sequelize.cast('location_y', 'decimal')]]
+    const user = await servicesProviders.findAll({
+      attributes: ['id'],
+      include: [
+        {
+          model: Services,
+          as: 'service',
+          attributes: ['id', 'description'],
+        },
+          {
+            model: Users,
+            as: 'provider',
+            attributes: ['id',['location_x', 'latitude'],['location_y', 'longitude'], ['name', 'title']],
+            where: {
+              city: city,
+              provider: true,
+            },
+          },
+        ],
     });
 
     if (!user) {
