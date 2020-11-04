@@ -32,6 +32,7 @@ import ProductsIdController from './app/controllers/ProductsIdController';
 import UsersFindCityController from './app/controllers/UsersFindCityController';
 import UserFindMapController from './app/controllers/UserFindMapController';
 import UsersCoordinatesController from './app/controllers/UsersCoordinatesController';
+import UserUpdateLocationController from './app/controllers/UserUpdateLocationController';
 
 const routes = new Router();
 
@@ -115,6 +116,8 @@ routes.get('/productId', ProductsIdController.index);
 routes.get('/usersMap', UserFindMapController.index);
 
 routes.get('/userCoordinates', UsersCoordinatesController.index);
+
+routes.put('/user-location', UserUpdateLocationController.update);
 
 routes.use(authMiddleware);
 

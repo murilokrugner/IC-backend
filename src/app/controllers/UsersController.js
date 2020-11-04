@@ -73,7 +73,7 @@ class UsersController {
       city: req.body.city,
       provider: req.body.provider,
       type_document: req.body.type_document,
-      first_access: "1",
+      first_access: "0",
       store: 0
     });
 
