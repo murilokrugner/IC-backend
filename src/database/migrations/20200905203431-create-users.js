@@ -73,6 +73,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      mesorregiao: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
+      microrregiao: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
       provider: {
         type: Sequelize.BOOLEAN,
         allowNull: false,

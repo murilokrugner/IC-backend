@@ -71,6 +71,8 @@ class UsersController {
       cep_address: req.body.cep_address,
       state_address: req.body.state_address,
       city: req.body.city,
+      mesorregiao: req.body.mesorregiao,
+      microrregiao: req.body.microrregiao,
       provider: req.body.provider,
       type_document: req.body.type_document,
       first_access: "0",

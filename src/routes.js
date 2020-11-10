@@ -33,6 +33,7 @@ import UsersFindCityController from './app/controllers/UsersFindCityController';
 import UserFindMapController from './app/controllers/UserFindMapController';
 import UsersCoordinatesController from './app/controllers/UsersCoordinatesController';
 import UserUpdateLocationController from './app/controllers/UserUpdateLocationController';
+import GetServicesMicrorregiaoController from './app/controllers/GetServicesMicrorregiaoController';
 
 const routes = new Router();
 
@@ -118,6 +119,8 @@ routes.get('/usersMap', UserFindMapController.index);
 routes.get('/userCoordinates', UsersCoordinatesController.index);
 
 routes.put('/user-location', UserUpdateLocationController.update);
+
+routes.get('/services-microrregiao', GetServicesMicrorregiaoController.index);
 
 routes.use(authMiddleware);
 
