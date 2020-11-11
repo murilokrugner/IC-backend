@@ -1,5 +1,5 @@
-import Sequelize, { Model } from 'sequelize';
-import bcrypt from 'bcryptjs';
+import Sequelize, { Model } from "sequelize";
+import bcrypt from "bcryptjs";
 
 class Users extends Model {
   static init(sequelize) {
@@ -12,8 +12,8 @@ class Users extends Model {
         mobile_phone: Sequelize.STRING,
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
-        location_x: Sequelize.DECIMAL(19,9),
-        location_y: Sequelize.DECIMAL(19,9),
+        location_x: Sequelize.DECIMAL(19, 9),
+        location_y: Sequelize.DECIMAL(19, 9),
         document: Sequelize.STRING,
         address: Sequelize.STRING,
         number_address: Sequelize.STRING,
@@ -28,13 +28,14 @@ class Users extends Model {
         type_document: Sequelize.STRING,
         first_access: Sequelize.STRING,
         store: Sequelize.BOOLEAN,
+        blocked: Sequelize.BOOLEAN,
       },
       {
         sequelize,
       }
     );
 
-    this.addHook('beforeSave', async user => {
+    this.addHook("beforeSave", async (user) => {
       if (user.password) {
         user.password_hash = await bcrypt.hash(user.password, 8);
       }
@@ -44,8 +45,8 @@ class Users extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'avatar_id', as: 'avatar' });
-    this.belongsTo(models.FileCover, { foreignKey: 'cover_id', as: 'cover' });
+    this.belongsTo(models.File, { foreignKey: "avatar_id", as: "avatar" });
+    this.belongsTo(models.FileCover, { foreignKey: "cover_id", as: "cover" });
   }
 
   checkPassword(password) {

@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable("users", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -33,11 +33,11 @@ module.exports = {
         allowNull: false,
       },
       location_x: {
-        type: Sequelize.DECIMAL(19,9),
+        type: Sequelize.DECIMAL(19, 9),
         allowNull: true,
       },
       location_y: {
-        type: Sequelize.DECIMAL(19,9),
+        type: Sequelize.DECIMAL(19, 9),
         allowNull: true,
       },
       document: {
@@ -97,6 +97,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      blocked: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -108,7 +112,7 @@ module.exports = {
     });
   },
 
-  down: queryInterface => {
-    return queryInterface.dropTable('users');
+  down: (queryInterface) => {
+    return queryInterface.dropTable("users");
   },
 };
