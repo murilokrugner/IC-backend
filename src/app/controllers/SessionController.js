@@ -1,23 +1,21 @@
-import jwt from 'jsonwebtoken';
-import * as Yup from 'yup';
+import jwt from "jsonwebtoken";
+import * as Yup from "yup";
 
-import authConfig from '../../config/auth';
-import Users from '../models/Users';
-import File from '../models/File';
-import FileCover from '../models/FileCover';
+import authConfig from "../../config/auth";
+import Users from "../models/Users";
+import File from "../models/File";
+import FileCover from "../models/FileCover";
 
 class SessionController {
   async store(req, res) {
     // validações
     const schema = Yup.object().shape({
-      email: Yup.string()
-        .email()
-        .required(),
+      email: Yup.string().email().required(),
       password: Yup.string().required(),
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ error: 'Validation fails' });
+      return res.status(400).json({ error: "Validation fails" });
     }
 
     const { email, password } = req.body;
@@ -28,8 +26,8 @@ class SessionController {
       include: [
         {
           model: File,
-          as: 'avatar',
-          attributes: ['id', 'path', 'url'],
+          as: "avatar",
+          attributes: ["id", "path", "url"],
         },
       ],
     });
@@ -39,22 +37,32 @@ class SessionController {
       include: [
         {
           model: FileCover,
-          as: 'cover',
-          attributes: ['id', 'path', 'url'],
+          as: "cover",
+          attributes: ["id", "path", "url"],
         },
       ],
     });
 
     if (!user || !userCover) {
-      return res.status(401).json({ error: 'User not found' });
+      return res.status(401).json({ error: "User not found" });
     }
 
     // verificando senha
     if (!(await user.checkPassword(password))) {
-      return res.json(401).json({ error: 'Password does not match' });
+      return res.json(401).json({ error: "Password does not match" });
     }
 
-    const { id, name, phone, avatar, provider, city, type_document, first_access } = user;
+    const {
+      id,
+      name,
+      phone,
+      avatar,
+      provider,
+      city,
+      type_document,
+      first_access,
+      blocked,
+    } = user;
 
     const { cover } = userCover;
 
@@ -70,6 +78,7 @@ class SessionController {
         city,
         type_document,
         first_access,
+        blocked,
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
