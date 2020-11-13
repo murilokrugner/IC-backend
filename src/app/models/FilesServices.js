@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from "sequelize";
 
 class FilesServices extends Model {
   static init(sequelize) {
@@ -9,7 +9,7 @@ class FilesServices extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.105:3333/files/${this.path}`;
+            return `http://192.168.2.101:3333/files/${this.path}`;
           },
         },
       },
@@ -22,7 +22,7 @@ class FilesServices extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Users, { foreignKey: 'id_provider', as: 'provider' });
+    this.belongsTo(models.Users, { foreignKey: "id_provider", as: "provider" });
   }
 }
 

@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from "sequelize";
 
 class FilesProducts extends Model {
   static init(sequelize) {
@@ -9,13 +9,13 @@ class FilesProducts extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.105:3333/files/${this.path}`;
+            return `http://192.168.2.101:3333/files/${this.path}`;
           },
         },
         imagePath: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.105:3333/files/${this.path}`;
+            return `http://192.168.2.101:3333/files/${this.path}`;
           },
         },
         main: Sequelize.BOOLEAN,
@@ -29,7 +29,10 @@ class FilesProducts extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Products, { foreignKey: 'id_product', as: 'product' });
+    this.belongsTo(models.Products, {
+      foreignKey: "id_product",
+      as: "product",
+    });
   }
 }
 

@@ -1,4 +1,4 @@
-import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from "sequelize";
 
 class File extends Model {
   static init(sequelize) {
@@ -9,7 +9,7 @@ class File extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.105:3333/files/${this.path}`;
+            return `http://192.168.2.101:3333/files/${this.path}`;
           },
         },
       },
