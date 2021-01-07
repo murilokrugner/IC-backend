@@ -25,7 +25,7 @@ import PaymentProductController from "./app/controllers/PaymentProductController
 import FilesProductsController from "./app/controllers/FilesProductsController";
 import ProductAddCategoryController from "./app/controllers/ProductAddCategoryController";
 import StoreController from "./app/controllers/StoreController";
-import FileMainProductController from "./app/controllers/FileMainProductController";
+import FileMainProductController from './app/controllers/FIleMainProductController';
 import CountProductsController from "./app/controllers/CountProductsController";
 import FilesViewProductsController from "./app/controllers/FilesViewProductsController";
 import ProductsIdController from "./app/controllers/ProductsIdController";
