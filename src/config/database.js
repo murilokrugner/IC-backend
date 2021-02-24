@@ -2,9 +2,9 @@ module.exports = {
   dialect: 'mysql',
   dialectOptions: { decimalNumbers: true },
   host: 'mysql.knowledgesoftware.kinghost.net',
-  username: 'knowledges_add1',
-  password: 'c595a7dd29',
-  database: 'knowledgesoftw',
+  username: 'knowledg01_add2',
+  password: 'xtz125top',
+  database: 'knowledgesoftw01',
   define: {
     timestamps: true,
     underscored: true,
