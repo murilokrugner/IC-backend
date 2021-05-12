@@ -1,4 +1,4 @@
-module.exports = {
+/*module.exports = {
   dialect: 'mysql',
   dialectOptions: { decimalNumbers: true },
   host: 'mysql.knowledgesoftware.kinghost.net',
@@ -10,22 +10,22 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
-};
+};*/
 
 
-/*module.exports = {
-  dialect: 'postgres',
+module.exports = {
+  dialect: 'mysql',
   host: 'localhost',
-  username: 'postgres',
+  username: 'root',
   password: 'docker',
-  database: 'postgres',
+  database: 'knowservices',
   define: {
     timestamps: true,
     underscored: true,
     underscoredAll: true,
   },
   //dialectOptions: { decimalNumbers: true }
-};*/
+};
 
 /*dialectOptions: {
     decimalNumbers: true

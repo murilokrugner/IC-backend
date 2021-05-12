@@ -9,7 +9,7 @@ class FilesDocumentProviders extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path}`;
+            return `http://192.168.2.116:3333/files/${this.path}`;
           },
         },
         name_verse: Sequelize.STRING,
@@ -17,7 +17,7 @@ class FilesDocumentProviders extends Model {
         url_verse: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path_verse}`;
+            return `http://192.168.2.116:3333/files/${this.path_verse}`;
           },
         },
         name_your: Sequelize.STRING,
@@ -25,7 +25,7 @@ class FilesDocumentProviders extends Model {
         url_your: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path_your}`;
+            return `http://192.168.2.116:3333/files/${this.path_your}`;
           },
         },
       },

@@ -9,13 +9,13 @@ class FilesProducts extends _sequelize.Model {
         url: {
           type: _sequelize2.default.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path}`;
+            return `http://192.168.2.116:3333/files/${this.path}`;
           },
         },
         imagePath: {
           type: _sequelize2.default.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path}`;
+            return `http://192.168.2.116:3333/files/${this.path}`;
           },
         },
         main: _sequelize2.default.BOOLEAN,
