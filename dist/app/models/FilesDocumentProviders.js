@@ -9,7 +9,7 @@ class FilesDocumentProviders extends _sequelize.Model {
         url: {
           type: _sequelize2.default.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path}`;
+            return `http://knowledgesoftware.kinghost.net:21046/files/${this.path}`;
           },
         },
         name_verse: _sequelize2.default.STRING,
@@ -17,7 +17,7 @@ class FilesDocumentProviders extends _sequelize.Model {
         url_verse: {
           type: _sequelize2.default.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path_verse}`;
+            return `http://knowledgesoftware.kinghost.net:21046/files/${this.path_verse}`;
           },
         },
         name_your: _sequelize2.default.STRING,
@@ -25,7 +25,7 @@ class FilesDocumentProviders extends _sequelize.Model {
         url_your: {
           type: _sequelize2.default.VIRTUAL,
           get() {
-            return `http://192.168.2.101:3333/files/${this.path_your}`;
+            return `http://knowledgesoftware.kinghost.net:21046/files/${this.path_your}`;
           },
         },
       },
