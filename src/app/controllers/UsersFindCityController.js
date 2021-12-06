@@ -1,7 +1,7 @@
 import Users from '../models/Users';
 import servicesProviders from '../models/servicesProviders';
 import Services from '../models/Services';
-import sequelize from 'sequelize';
+import File from '../models/File';
 
 class UsersFindCityController {
   async index(req, res) {
@@ -9,7 +9,7 @@ class UsersFindCityController {
     const {city} = req.query;
 
     const user = await servicesProviders.findAll({
-      attributes: ['id'],
+      attributes: ['id', 'price'],
       include: [
         {
           model: Services,
@@ -24,6 +24,12 @@ class UsersFindCityController {
               city: city,
               provider: true,
             },
+            include: [
+              {
+                model: File,
+                as: 'avatar',
+              }
+            ]
           },
         ],
     });

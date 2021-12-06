@@ -18,6 +18,11 @@ class Services_ProvidersController {
           as: 'service',
           attributes: ['id', 'description'],
         },
+        {
+          model: Users,
+          as: 'provider',
+          attributes: ['id', 'name', 'email', 'phone', 'mobile_phone', 'address', 'number_address', 'neighborhood_address', 'cep_address', 'city', 'state_address'],
+        },
       ],
     });
 
