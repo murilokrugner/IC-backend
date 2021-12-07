@@ -37,12 +37,15 @@ import GetServicesMicrorregiaoController from "./app/controllers/GetServicesMicr
 import PhotoDocumentYourController from "./app/controllers/Documents/PhotoDocumentYourController";
 import PhotoDocumentVerseController from "./app/controllers/Documents/PhotoDocumentVerseController";
 import PhotoDocumentController from "./app/controllers/Documents/PhotoDocumentController";
+import ForgotPasswordController from "./app/controllers/ForgotPasswordController";
 
 const routes = new Router();
 
 const upload = multer(multerConfig);
 
 routes.post("/session", SessionController.store);
+
+routes.post("/alter-password", ForgotPasswordController.store);
 
 routes.post("/users", UsersController.store);
 routes.get("/users", UsersController.index);
