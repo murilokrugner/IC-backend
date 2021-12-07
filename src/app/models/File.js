@@ -9,7 +9,7 @@ class File extends Model {
         url: {
           type: Sequelize.VIRTUAL,
           get() {
-            return `http://knowledgesoftware.kinghost.net:21046:21046/files/${this.path}`;
+            return `http://knowledgesoftware.kinghost.net:21046/files/${this.path}`;
           },
         },
       },
