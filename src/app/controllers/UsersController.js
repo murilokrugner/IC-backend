@@ -71,6 +71,7 @@ class UsersController {
       email: req.body.email,
       phone: req.body.phone,
       mobile_phone: req.body.mobile_phone,
+      document: req.body.document,
       password: req.body.password,
       location_x: req.body.location_x,
       location_y: req.body.location_y,
